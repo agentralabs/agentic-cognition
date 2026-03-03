@@ -1,30 +1,34 @@
-.PHONY: build test clippy fmt check clean install
+.PHONY: all build build-debug test test-unit test-bridge lint lint-fmt lint-clippy bench clean install
+
+all: build
 
 build:
-	cargo build --all-features
+	cargo build --workspace --release
 
-test:
-	cargo test --all-features
+build-debug:
+	cargo build --workspace
 
-clippy:
-	cargo clippy --all-targets --all-features -- -D warnings
+test: test-unit test-bridge
 
-fmt:
-	cargo fmt --all
+test-unit:
+	cargo test --lib
 
-check:
-	cargo check --all-features
+test-bridge:
+	cargo test --test "bridge*"
+
+lint: lint-fmt lint-clippy
+
+lint-fmt:
+	cargo fmt --all -- --check
+
+lint-clippy:
+	cargo clippy --workspace --all-targets -- -D warnings
+
+bench:
+	cargo bench
 
 clean:
 	cargo clean
 
 install:
-	cargo install --path crates/agentic-cognition-cli
-
-mcp:
-	cargo run --bin acog-mcp
-
-release:
-	cargo build --release --all-features
-
-all: fmt clippy test build
+	cargo install --path crates/agentic-cognition-mcp
