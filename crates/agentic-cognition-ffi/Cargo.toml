@@ -1,0 +1,35 @@
+[package]
+name = "agentic-cognition-ffi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "FFI bindings for AgenticCognition"
+
+[lib]
+name = "agentic_cognition_ffi"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+agentic-cognition = { workspace = true, features = ["format"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[features]
+python = ["dep:pyo3"]
+wasm = ["dep:wasm-bindgen", "dep:serde-wasm-bindgen"]
+
+[dependencies.pyo3]
+version = "0.20"
+features = ["extension-module"]
+optional = true
+
+[dependencies.wasm-bindgen]
+version = "0.2"
+optional = true
+
+[dependencies.serde-wasm-bindgen]
+version = "0.6"
+optional = true

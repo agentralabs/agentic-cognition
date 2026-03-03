@@ -1,0 +1,36 @@
+[package]
+name = "agentic-cognition-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "MCP server for AgenticCognition — 14 tools for user modeling"
+
+[features]
+default = ["stdio"]
+stdio = []
+
+[[bin]]
+name = "acog-mcp"
+path = "src/main.rs"
+
+[lib]
+name = "agentic_cognition_mcp"
+path = "src/lib.rs"
+
+[dependencies]
+agentic-cognition = { workspace = true }
+agentic-sdk = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { workspace = true }
+clap = { workspace = true }
+dirs = "5"
+
+[dev-dependencies]
+tempfile = { workspace = true }

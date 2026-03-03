@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+fail() {
+  echo "ERROR: $*" >&2
+  exit 1
+}
+
+assert_contains() {
+  local pattern="$1"
+  local file="$2"
+  grep -rqF "$pattern" "$file" || fail "Missing pattern '${pattern}' in ${file}"
+}
+
+assert_contains 'curl -fsSL https://agentralabs.tech/install/cognition' README.md
+assert_contains 'npm install @agenticamem/cognition' README.md
+assert_contains 'pip install agentic-cognition' README.md
+
+assert_contains 'curl -fsSL https://agentralabs.tech/install/cognition' docs/public/installation.md
+assert_contains 'npm install @agenticamem/cognition' docs/public/installation.md
+assert_contains 'curl -fsSL https://agentralabs.tech/install/cognition' docs/public/quickstart.md
+
+echo "Install command guardrails passed."

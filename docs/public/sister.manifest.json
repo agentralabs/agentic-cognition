@@ -1,0 +1,31 @@
+{
+  "key": "cognition",
+  "name": "AgenticCognition",
+  "version": "0.1.0",
+  "include_landing": true,
+  "page_ids": [
+    "experience-with-vs-without",
+    "quickstart",
+    "installation",
+    "command-surface",
+    "runtime-install-sync",
+    "concepts",
+    "integration-guide",
+    "faq",
+    "benchmarks",
+    "api-reference",
+    "file-format",
+    "architecture",
+    "cli-reference",
+    "configuration",
+    "ffi-reference",
+    "mcp-tools",
+    "mcp-resources",
+    "mcp-prompts",
+    "troubleshooting",
+    "primary-problem-coverage",
+    "initial-problem-coverage",
+    "playbooks-agent-integration"
+  ],
+  "slug_by_id": {}
+}

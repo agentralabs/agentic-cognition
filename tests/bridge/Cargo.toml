@@ -1,0 +1,10 @@
+[package]
+name = "agentic-cognition-bridge-tests"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+agentic-cognition = { workspace = true }
+serde_json = { workspace = true }
+tempfile = { workspace = true }
