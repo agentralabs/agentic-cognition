@@ -137,8 +137,8 @@ jobs:
       # S35: Required docs
       - name: "S35: Required docs exist"
         run: |
-          for f in QUICKSTART.md ARCHITECTURE.md API.md CLI.md MCP-TOOLS.md; do
-            test -f "docs/$f" && echo "OK: docs/$f"
+          for f in quickstart.md architecture.md api-reference.md cli-reference.md mcp-tools.md; do
+            test -f "docs/public/$f" && echo "OK: docs/public/$f"
           done
 
       # S37: cargo doc builds
@@ -154,17 +154,17 @@ jobs:
       # S42-S47: Sister docs
       - name: "S42-S47: Sister docs"
         run: |
-          test -f docs/INVENTIONS.md && echo "S42: INVENTIONS.md OK"
-          test -f docs/SISTER-INTEGRATION.md && echo "S43: SISTER-INTEGRATION.md OK"
-          test -f docs/EXAMPLES.md && echo "S44: EXAMPLES.md OK"
-          test -f docs/FAQ.md && echo "S45: FAQ.md OK"
-          test -f docs/TROUBLESHOOTING.md && echo "S46: TROUBLESHOOTING.md OK"
+          test -f docs/public/integration-guide.md && echo "S42: integration-guide.md OK"
+          test -f docs/public/faq.md && echo "S43: faq.md OK"
+          test -f docs/public/troubleshooting.md && echo "S44: troubleshooting.md OK"
+          test -f docs/public/concepts.md && echo "S45: concepts.md OK"
+          test -f docs/public/benchmarks.md && echo "S46: benchmarks.md OK"
 
       # S47: SVG diagrams
       - name: "S47: SVG diagrams"
         run: |
-          test -f docs/assets/architecture.svg && echo "architecture.svg OK"
-          test -f docs/assets/model-lifecycle.svg && echo "model-lifecycle.svg OK"
+          test -f assets/architecture-agentra.svg && echo "architecture-agentra.svg OK"
+          test -f assets/benchmark-chart.svg && echo "benchmark-chart.svg OK"
 
       # S48: Canonical compliance
       - name: "S48: Canonical patterns"

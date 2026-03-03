@@ -32,7 +32,7 @@ blake3 = "1.5"
 clap = { version = "4", features = ["derive"] }
 
 # SDK
-agentic-sdk = { version = "0.2.0", path = "../agentic-sdk" }
+agentic-sdk = "0.2.0"
 
 # Internal crates
 agentic-cognition = { path = "crates/agentic-cognition" }
