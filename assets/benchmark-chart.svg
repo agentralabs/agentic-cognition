@@ -65,7 +65,7 @@
   <line x1="58" y1="368" x2="802" y2="368" stroke="#1f1f1f"/>
 
   <text x="130" y="393" class="mono ink" font-size="28" font-weight="700" text-anchor="middle">24</text>
-  <text x="130" y="410" class="mono muted" font-size="10" text-anchor="middle">inventions</text>
+  <text x="130" y="410" class="mono muted" font-size="10" text-anchor="middle">capabilities</text>
 
   <text x="300" y="393" class="mono ink" font-size="28" font-weight="700" text-anchor="middle">&lt;1ms</text>
   <text x="300" y="410" class="mono muted" font-size="10" text-anchor="middle">belief add</text>

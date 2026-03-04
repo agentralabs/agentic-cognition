@@ -14,9 +14,9 @@
   <a href="#install"><img src="https://img.shields.io/badge/cargo_install-agentic--cognition-F59E0B?style=for-the-badge&logo=rust&logoColor=white" alt="cargo install"></a>
   <a href="#mcp-server"><img src="https://img.shields.io/badge/MCP_Server-agentic--cognition--mcp-10B981?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0xMiAydjIwTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=white" alt="MCP Server"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge" alt="MIT License"></a>
-  <a href="docs/INVENTIONS.md"><img src="https://img.shields.io/badge/Inventions-24-8B5CF6?style=for-the-badge" alt="24 Inventions"></a>
+  <a href="docs/public/concepts.md"><img src="https://img.shields.io/badge/Capabilities-24-8B5CF6?style=for-the-badge" alt="24 Capabilities"></a>
   <a href="paper/paper-i-format/agentic-cognition-paper.pdf"><img src="https://img.shields.io/badge/Research-Paper_I-8B5CF6?style=for-the-badge" alt="Research Paper I"></a>
-  <a href="docs/API.md"><img src="https://img.shields.io/badge/format-.acog-3B82F6?style=for-the-badge" alt=".acog format"></a>
+  <a href="docs/public/api-reference.md"><img src="https://img.shields.io/badge/format-.acog-3B82F6?style=for-the-badge" alt=".acog format"></a>
 </p>
 
 <p align="center">
@@ -28,12 +28,12 @@
 </p>
 
 <p align="center">
-  <a href="#quickstart">Quickstart</a> · <a href="#problems-solved">Problems Solved</a> · <a href="#how-it-works">How It Works</a> · <a href="#belief-physics">Belief Physics</a> · <a href="#shadow-psychology">Shadow Psychology</a> · <a href="#benchmarks">Benchmarks</a> · <a href="#install">Install</a> · <a href="docs/API.md">API</a> · <a href="docs/INVENTIONS.md">Inventions</a> · <a href="docs/papers/">Papers</a>
+  <a href="#quickstart">Quickstart</a> · <a href="#problems-solved">Problems Solved</a> · <a href="#how-it-works">How It Works</a> · <a href="#belief-physics">Belief Physics</a> · <a href="#shadow-psychology">Shadow Psychology</a> · <a href="#benchmarks">Benchmarks</a> · <a href="#install">Install</a> · <a href="docs/public/api-reference.md">API</a> · <a href="docs/public/concepts.md">Capabilities</a> · <a href="docs/papers/">Papers</a>
 </p>
 
 ---
 
-> Sister #9 of 25 in the Agentra ecosystem | `.acog` format | 24 Inventions | 14 MCP Tools | 40+ CLI Commands
+> Sister #9 of 25 in the Agentra ecosystem | `.acog` format | 24 Capabilities | 14 MCP Tools | 40+ CLI Commands
 
 <p align="center">
   <img src="assets/github-terminal-pane.svg" alt="AgenticCognition terminal demo" width="980">
@@ -124,7 +124,7 @@ AgenticCognition is a Rust-native cognition engine that treats human understandi
 |                   COGNITION ENGINE                           |
 +-----------+-----------+------------+----------+-------------+
 | Write     | Query     | 24         | Belief   | Prediction  |
-| Engine    | Engine    | Inventions | Physics  | Engine      |
+| Engine    | Engine    | Capabilities | Physics  | Engine      |
 +-----------+-----------+------------+----------+-------------+
                              |
                   +----------v----------+
@@ -145,11 +145,11 @@ A model begins at **Birth** with no observations. As data accumulates through th
 
 ---
 
-## 24 Inventions
+## 24 Capabilities
 
-AgenticCognition ships 24 inventions organized across five tiers of increasing depth:
+AgenticCognition ships 24 capabilities organized across five tiers of increasing depth:
 
-| Tier | Inventions | Focus |
+| Tier | Capabilities | Focus |
 |:---|:---|:---|
 | **P0: Living Mirror** | Living User Model, Belief Graph, Decision Fingerprint, Soul Reflection | Core consciousness modeling |
 | **P1: Belief Physics** | Crystallization, Self-Concept Topology, Belief Drift, Preference Oracle | Physical properties of beliefs |
@@ -157,7 +157,7 @@ AgenticCognition ships 24 inventions organized across five tiers of increasing d
 | **P3: Quantum** | Entanglement, Conviction Gravity, Certainty Collapse, Value Tectonics, Metamorphosis | Deep dynamics |
 | **P4: Temporal** | Reasoning Fossils, Cognitive Strata, Decision Simulation, Future Projection, Identity Thread, Growth Rings | Archaeology and prediction |
 
-[Full invention documentation ->](docs/INVENTIONS.md)
+[Full capability documentation ->](docs/public/concepts.md)
 
 ---
 
@@ -836,7 +836,7 @@ This is a Cargo workspace monorepo containing the core library, MCP server, CLI,
 
 | Crate | Description |
 |:---|:---|
-| [`agentic-cognition`](crates/agentic-cognition/) | Core library -- types, engines, 24 inventions, belief physics |
+| [`agentic-cognition`](crates/agentic-cognition/) | Core library -- types, engines, 24 capabilities, belief physics |
 | [`agentic-cognition-mcp`](crates/agentic-cognition-mcp/) | MCP server -- 14 tools, JSON-RPC 2.0 over stdio |
 | [`agentic-cognition-cli`](crates/agentic-cognition-cli/) | CLI binary -- `acog`, 40+ commands |
 | [`agentic-cognition-ffi`](crates/agentic-cognition-ffi/) | FFI bindings -- C, Python, WASM |
@@ -895,7 +895,7 @@ This isn't a prototype. It's tested and benchmarked.
 |:---|---:|:---|
 | Phase 1: Types | 35 | Core type system -- beliefs, models, domains, confidence |
 | Phase 2: Engine | 45 | Write/query operations -- CRUD, search, graph traversal |
-| Phase 3: Inventions | 28 | All 24 invention modules -- crystallization, shadow, drift |
+| Phase 3: Capabilities | 28 | All 24 capability modules -- crystallization, shadow, drift |
 | Phase 4: MCP | 8 | Tool count, parameter validation, response quality |
 | Phase 5: Format | 17 | .acog persistence -- write, read, integrity, corruption recovery |
 | Phase 6: Integration | 19 | End-to-end scenarios -- model lifecycle, cross-session continuity |
@@ -972,10 +972,10 @@ cargo bench -p agentic-cognition
 |:---|:---|
 | [Quickstart](docs/QUICKSTART.md) | Get started in 5 minutes |
 | [Architecture](docs/ARCHITECTURE.md) | System design and data flow |
-| [API Reference](docs/API.md) | Rust API docs |
+| [API Reference](docs/public/api-reference.md) | Rust API docs |
 | [CLI Reference](docs/CLI.md) | All 40+ commands with examples |
 | [MCP Tools](docs/MCP-TOOLS.md) | 14 MCP tools with parameters and responses |
-| [24 Inventions](docs/INVENTIONS.md) | All inventions explained with examples |
+| [24 Capabilities](docs/public/concepts.md) | All capabilities explained with examples |
 | [Core Concepts](docs/CONCEPTS.md) | Belief physics, shadow psychology, drift |
 | [Sister Integration](docs/SISTER-INTEGRATION.md) | Bridge documentation and data flow |
 | [Examples](docs/EXAMPLES.md) | Usage examples and patterns |
@@ -993,7 +993,7 @@ cargo bench -p agentic-cognition
 | **Test Coverage** | 152 tests passing |
 | **MCP Tools** | 14 |
 | **CLI Commands** | 40+ |
-| **Inventions** | 24 across 5 tiers |
+| **Capabilities** | 24 across 5 tiers |
 | **Storage Efficiency** | ~800 KB per 1K beliefs |
 | **External Dependencies** | 0 |
 

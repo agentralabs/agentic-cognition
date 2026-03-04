@@ -15,10 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Shadow Map (shadow beliefs, projections, blindspots)
 - Bias Field with 13 bias types and emotional triggers
 - Drift Timeline (events, value tectonics, metamorphosis, growth rings)
-- Soul Reflection invention
-- Preference Oracle invention
-- Decision Simulation invention
-- Future Self Projection invention
+- Soul Reflection capability
+- Preference Oracle capability
+- Decision Simulation capability
+- Future Self Projection capability
 - Belief Crystallization and Certainty Collapse
 - Conviction Gravity model
 - .acog file format with blake3 checksums and atomic writes

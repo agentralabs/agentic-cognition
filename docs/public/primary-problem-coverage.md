@@ -24,4 +24,4 @@ Every conversation starts fresh. The AI has no persistent understanding of who t
 
 ## Coverage Matrix
 
-Each primary problem is addressed by multiple inventions across the five tiers (P0 through P4), ensuring deep coverage rather than surface-level fixes.
+Each primary problem is addressed by multiple capabilities across the five tiers (P0 through P4), ensuring deep coverage rather than surface-level fixes.

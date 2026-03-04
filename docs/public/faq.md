@@ -18,7 +18,7 @@ Any MCP-compatible client works: Claude Desktop, Cursor, Windsurf, VS Code, Cody
 
 ## Can I use AgenticCognition without the MCP server?
 
-Yes. The CLI (`acog`) and the Rust library provide full access to all 24 inventions. The MCP server is one of several access surfaces.
+Yes. The CLI (`acog`) and the Rust library provide full access to all 24 capabilities. The MCP server is one of several access surfaces.
 
 ## How does shadow detection work?
 
