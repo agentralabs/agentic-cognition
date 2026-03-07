@@ -14,10 +14,13 @@
 
 pub mod audit;
 pub mod bridges;
+pub mod cache;
 pub mod contracts;
 pub mod engine;
 pub mod format;
 pub mod inventions;
+pub mod metrics;
+pub mod query;
 pub mod storage;
 pub mod types;
 pub mod validation;

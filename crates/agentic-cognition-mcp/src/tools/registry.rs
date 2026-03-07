@@ -19,174 +19,734 @@ impl ToolRegistry {
                 name: "cognition_model_create".into(),
                 description: "Create a new living user model".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {},
-                    "required": []
-                }),
+                        "type": "object",
+                        "properties": {
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": []
+                    }),
             },
             ToolDef {
                 name: "cognition_model_heartbeat".into(),
                 description: "Pulse model with new observations to keep it alive".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" },
-                        "observations": {
-                            "type": "array",
-                            "items": { "type": "string" },
-                            "description": "New observations to integrate"
-                        }
-                    },
-                    "required": ["model_id", "observations"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "observations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "New observations to integrate"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id",
+                            "observations"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_model_vitals".into(),
                 description: "Get model health, confidence, and vital signs".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_model_portrait".into(),
                 description: "Get full model portrait with all components summarized".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_belief_add".into(),
                 description: "Add a new belief to the user model".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" },
-                        "content": { "type": "string", "description": "Belief content" },
-                        "domain": { "type": "string", "description": "Belief domain (self, relationships, work, politics, religion, science, values, world_model, identity, capability, worth, other)" },
-                        "confidence": { "type": "number", "description": "Confidence 0.0-1.0" }
-                    },
-                    "required": ["model_id", "content", "domain", "confidence"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "content": {
+                                "type": "string",
+                                "description": "Belief content"
+                            },
+                            "domain": {
+                                "type": "string",
+                                "description": "Belief domain (self, relationships, work, politics, religion, science, values, world_model, identity, capability, worth, other)"
+                            },
+                            "confidence": {
+                                "type": "number",
+                                "description": "Confidence 0.0-1.0"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id",
+                            "content",
+                            "domain",
+                            "confidence"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_belief_query".into(),
                 description: "Query beliefs by domain, search term, or list all".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" },
-                        "domain": { "type": "string", "description": "Filter by domain (optional)" },
-                        "search": { "type": "string", "description": "Search term (optional)" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "domain": {
+                                "type": "string",
+                                "description": "Filter by domain (optional)"
+                            },
+                            "search": {
+                                "type": "string",
+                                "description": "Search term (optional)"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_belief_graph".into(),
                 description: "Get the full belief graph with connections and keystones".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_soul_reflect".into(),
                 description: "Perform deep soul reflection to discover user essence".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_self_topology".into(),
                 description: "Get self-concept topology with peaks, valleys, and blind canyons"
                     .into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_pattern_fingerprint".into(),
                 description: "Get decision fingerprint showing unique decision-making signature"
                     .into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_shadow_map".into(),
                 description: "Get shadow map of unconscious beliefs, projections, and blindspots"
                     .into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_drift_track".into(),
                 description: "Track belief drift, value tectonics, and metamorphoses over time"
                     .into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" }
-                    },
-                    "required": ["model_id"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_predict".into(),
                 description: "Predict user preference for an item based on their model".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" },
-                        "item": { "type": "string", "description": "Item to predict preference for" }
-                    },
-                    "required": ["model_id", "item"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "item": {
+                                "type": "string",
+                                "description": "Item to predict preference for"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id",
+                            "item"
+                        ]
+                    }),
             },
             ToolDef {
                 name: "cognition_simulate".into(),
                 description: "Simulate how user would decide in a given scenario".into(),
                 input_schema: json!({
-                    "type": "object",
-                    "properties": {
-                        "model_id": { "type": "string", "description": "Model UUID" },
-                        "scenario": { "type": "string", "description": "Decision scenario" },
-                        "options": {
-                            "type": "array",
-                            "items": { "type": "string" },
-                            "description": "Available options"
-                        }
-                    },
-                    "required": ["model_id", "scenario", "options"]
-                }),
+                        "type": "object",
+                        "properties": {
+                            "model_id": {
+                                "type": "string",
+                                "description": "Model UUID"
+                            },
+                            "scenario": {
+                                "type": "string",
+                                "description": "Decision scenario"
+                            },
+                            "options": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Available options"
+                            },
+                            "include_content": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Return full content (default: IDs only)"
+                            },
+                            "intent": {
+                                "type": "string",
+                                "enum": [
+                                    "exists",
+                                    "ids",
+                                    "summary",
+                                    "fields",
+                                    "full"
+                                ],
+                                "description": "Extraction intent level"
+                            },
+                            "since": {
+                                "type": "integer",
+                                "description": "Only return changes since this Unix timestamp"
+                            },
+                            "token_budget": {
+                                "type": "integer",
+                                "description": "Maximum token budget for response"
+                            },
+                            "max_results": {
+                                "type": "integer",
+                                "default": 10,
+                                "description": "Maximum number of results"
+                            },
+                            "cursor": {
+                                "type": "string",
+                                "description": "Pagination cursor for next page"
+                            }
+                        },
+                        "required": [
+                            "model_id",
+                            "scenario",
+                            "options"
+                        ]
+                    }),
             },
         ]
     }
