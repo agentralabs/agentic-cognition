@@ -35,7 +35,7 @@ clap = { version = "4", features = ["derive"] }
 agentic-sdk = "0.2.0"
 
 # Internal crates
-agentic-cognition = { path = "crates/agentic-cognition" }
-agentic-cognition-mcp = { path = "crates/agentic-cognition-mcp" }
-agentic-cognition-cli = { path = "crates/agentic-cognition-cli" }
-agentic-cognition-ffi = { path = "crates/agentic-cognition-ffi" }
+agentic-cognition = { path = "crates/agentic-cognition", version = "0.1.0" }
+agentic-cognition-mcp = { path = "crates/agentic-cognition-mcp", version = "0.1.0" }
+agentic-cognition-cli = { path = "crates/agentic-cognition-cli", version = "0.1.0" }
+agentic-cognition-ffi = { path = "crates/agentic-cognition-ffi", version = "0.1.0" }
