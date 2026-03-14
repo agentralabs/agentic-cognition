@@ -1,5 +1,7 @@
 //! MCP protocol handler
 
+pub mod compact;
+
 use crate::tools::ToolRegistry;
 use crate::types::*;
 use agentic_cognition::engine::validation::Validator;
@@ -67,6 +69,11 @@ impl ProtocolHandler {
     }
 
     fn handle_tools_list(&self, request: &JsonRpcRequest) -> JsonRpcResponse {
+        if compact::mcp_tool_surface_is_compact() {
+            let tools = compact::compact_tool_definitions();
+            return JsonRpcResponse::success(request.id.clone(), json!({ "tools": tools }));
+        }
+
         let tools: Vec<Value> = ToolRegistry::all_tools()
             .into_iter()
             .map(|t| {
@@ -106,7 +113,20 @@ impl ProtocolHandler {
 
         let arguments = params.get("arguments").cloned().unwrap_or(json!({}));
 
-        match self.dispatch_tool(tool_name, &arguments) {
+        // Normalize compact facade calls to canonical tool names
+        let (tool_name, arguments) =
+            match compact::normalize_compact_tool_call(tool_name, arguments) {
+                Ok(pair) => pair,
+                Err(msg) => {
+                    return JsonRpcResponse::error(
+                        request.id.clone(),
+                        INVALID_PARAMS,
+                        msg,
+                    )
+                }
+            };
+
+        match self.dispatch_tool(&tool_name, &arguments) {
             Ok(result) => JsonRpcResponse::success(
                 request.id.clone(),
                 json!({
